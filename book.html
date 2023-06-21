@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Railway Booking</title>
+<script>
+
+var traininfo;
+var price;
+var src;
+var des;
+var temp;
+
+const Bhimavaram=[
+['Hyderabad','17120-Narsapur Express',270],
+['Mumbai','17121-Mumbai Express',475],
+['Chennai','17122-Chennai Express',390],
+['Vijayawada','17123-Vijayawada Passenger',50]];
+
+const Vijayawada=[
+['Hyderabad','17120-Narsapur Express',225],
+['Mumbai','17121-Mumbai Express',410],
+['Chennai','17122-Chennai Express',330],
+['Bhimavaram','17124-Bhimavaram Passenger',50]];
+
+const Hyderabad=[
+['Vijayawada','17124-Bhimavaram Passenger',225],
+['Mumbai','17121-Mumbai Express',210],
+['Chennai','17122-Chennai Express',250],
+['Bhimavaram','17124-Bhimavaram Passenger',270]];
+
+const Chennai=[
+['Vijayawada','17125-Shigha Express',310],
+['Mumbai','17126-Maha Express',495],
+['Hyderabad','17127-Hyderabad Express',250],
+['Bhimavaram','17128-Bhimavaram Express',410]];
+
+const Mumbai=[
+['Vijayawada','17129-Shakrut Passenger',415],
+['Hyderabad','17129-Shakrut Passenger',265],
+['Chennai','17122-Chiyu Express',480],
+['Bhimavaram','17129-Shakrut Passenger',490]];
+
+function hello(){
+var from=document.getElementById("from").value;
+des=document.getElementById("to").value;
+src=from;
+if(from==des)
+{
+alert("Source and Destinations shouldn't be same");
+document.getElementById("railwayForm").reset();
+traininfo="";
+price="";
+return;
+}
+switch(from){
+case "Bhimavaram":temp=Bhimavaram;
+break;
+case "Vijayawada":temp=Vijayawada;
+break;
+case "Hyderabad":temp=Hyderabad;
+break;
+case "Chennai":temp=Chennai;
+break;
+case "Mumbai":temp=Mumbai;
+break;
+default:alert("Invalid");
+}
+for(let i=0;i<src.length;i++){
+if(des==temp[i][0])
+{
+traininfo=temp[i][1];
+price=temp[i][2];
+break;
+}
+}
+document.getElementById("train").value=traininfo;
+document.getElementById("fare").value=price;
+}
+
+function ticket()
+{
+var comp=Math.floor(Math.random()*15);
+var seat1="S"+comp+" "+Math.floor(Math.random()*71);
+var seat2="S"+comp+" "+Math.floor(Math.random()*71);
+var d=document.getElementById("date").value;
+price*=2;
+tick="From : "+src+"\nTo : "+des+"\nDate : "+d+"\nTrain Details : "+traininfo+"\nFare : "+price;
+var p1="Name : "+document.getElementById("p1name").value+"\nMobile : "+document.getElementById("phone").value+"\nAge : "+document.getElementById("age1").value+"\nGender : "+document.getElementById("gender1").value+"\nSeat : "+seat1;
+var p2="Name : "+document.getElementById("p2name").value+"\nAge : "+document.getElementById("age2").value+"\nGender : "+document.getElementById("gender2").value+"\nSeat : "+seat2;
+var full="TRAIN INFO\n\n"+tick+"\n\nPASSENGER INFO\n\n"+p1+"\n\n"+p2;
+var yn=confirm(full,"Are you sure to proceed?");
+sessionStorage.setItem("booked",full);
+}
+</script>
+</head>
+<style>
+body{
+background-image:url('https://img.freepik.com/free-photo/close-up-hand-holding-plane-tickets_23-2149030545.jpg?w=1480&t=st=1687347401~exp=1687348001~hmac=69900f5faa34ae4e9b484670712d73f002053f3bef68328dceb8c1a1c9c36e96');
+background-repeat:no-repeat;
+background-size:cover;
+}
+div{
+background-color:white;
+background-image:url('');
+background-repeat:no-repeat;
+background-size:cover;
+border:1px solid white;
+box-shadow:0 0 10px white;
+width:50%;
+border-radius:30px;
+margin-left:40%;
+}
+h1{
+color:dodgerblue;
+}
+h3{
+color:magenta;
+}
+label{
+font-weight:bold;
+}
+.p{
+background-color:dodgerblue;
+color:white;
+height:30px;
+width:70px;
+}
+.p:hover{
+background-color:white;
+color:black;
+box-shadow:0 0 2px black;
+}
+</style>
+<body>
+<br><br><br><br><br>
+<center>
+<div>
+<h1>Railway Ticket Booking</h1>
+<form id="railwayForm" onsubmit="ticket()" action="foodorder.html" method="post">
+<table>
+<tr>
+<td><h3>Train Details</h3></td>
+</tr>
+<tr>
+<td>
+<label for="from">From</label><br>
+<select name="from" id="from">
+<option>Select source station</option>
+<option>Bhimavaram</option>
+<option>Vijayawada</option>
+<option>Hyderabad</option>
+<option>Chennai</option>
+<option>Mumbai</option>
+</select>
+</td>
+<td>
+<label for="to">To</label><br>
+<select name="to" id="to">
+<option>Select destination station</option>
+<option>Hyderabad</option>
+<option>Mumbai</option>
+<option>Chennai</option>
+<option>Bhimavaram</option>
+<option>Vijayawada</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>
+<label  for="date">Date of Journey</label><br>
+<input type="date" id="date">
+</td>
+</tr>
+<tr>
+<td>
+<input type="button" onclick="hello()" value="Search Trains">
+</td>
+</tr>
+<tr>
+<td>
+<label for="train">Train Number & Name</label><br>
+<input type="text" id="train" name="train" disabled>
+</td>
+<td>
+<label for="fare">Fare</label><br>
+<input type="number" id="fare" name="fare" disabled>
+</td>
+</tr>
+<tr>
+<td>
+<h3>Passenger Details</h3>
+</td>
+</tr>
+<tr>
+<td><b>Passenger 1</b></td>
+</tr>
+<tr>
+<td>
+<label for="p1name">Name</label><br>
+<input type="text" id="p1name" name="p1name">
+</td>
+<td>
+<label for="phone">Mobile Number</label><br>
+<input type="number" id="phone" name="phone">
+</td>
+</tr>
+<tr>
+<td>
+<label for="age">Age</label><br>
+<input type="number" id="age1" name="age">
+</td>
+<td>
+<label for="gender">Gender</label><br>
+<select name="gender" id="gender1">
+<option>Choose your gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Others</option>
+</select>
+<td>
+</tr>
+<tr>
+<td><b>Passenger 2</b></td>
+</tr>
+<tr>
+<td>
+<label for="p2name">Name</label><br>
+<input type="text" id="p2name" name="p2name">
+</td>
+</tr>
+<tr>
+<td>
+<label for="age">Age</label><br>
+<input type="number" id="age2" name="age">
+</td>
+<td>
+<label for="gender">Gender</label><br>
+<select name="gender" id="gender2">
+<option>Choose your gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Others</option>
+</select>
+<td>
+</tr>
+</table>
+<br>
+<input type="submit" class="p">
+<input type="reset" value="clear" class="p">
+</form>
+<br>
+</div>
+</center>
+</body>
+</html>

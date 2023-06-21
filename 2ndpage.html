@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+</title>
+<style>
+body{
+background-image:url('https://img.freepik.com/free-photo/two-elderly-people-train-station_181624-432.jpg?w=1480&t=st=1687346333~exp=1687346933~hmac=e13ada73cbe4beaeb00ed003c1fd1428465a9e3dabd08e18c70e1ee1670f876c');
+background-repeat:no-repeat;
+background-size:cover;
+}
+div{
+width:40%;
+text-align:center;
+}
+a,h2{
+text-decoration:none;
+color:white;
+}
+</style>
+</head>
+<body>
+<h2><marquee>Welcome to Indian railways</marquee></h2>
+<h2 id="hi">Welcome user</h2>
+
+<div>
+<h2>
+<br><br><br><br><br><br>
+<a href="train timings.html">Train timings>></a><br>
+<a href="foodorder.html">order food>></a><br>
+<a href="book.html">Ticket Booking>></a><br>
+<a href="http://wa.me/+916281796892">customer care support>></a><br>
+<a href="feedback.html">Feed Back>></a><br>
+</h2>
+</div>
+<script>
+var u=sessionStorage.getItem("user");
+var x="Welcome "+u;
+function(){
+document.getElementById("hi").innerHTML=x;
+}
+</script>
+</h3>
+</body>
+</html>

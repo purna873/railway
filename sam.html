@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Confirmation</title>
+<style>
+body{
+background-image:url('https://e1.pxfuel.com/desktop-wallpaper/581/154/desktop-wallpaper-backgrounds-for-login-page-login-page.jpg');
+background-repeat:no-repeat;
+background-size:cover;
+}
+div{
+width:400px;
+border:1px solid white;
+background-color:white;
+box-shadow:0 0 20px black;
+border-radius:20px;
+}
+h2{
+color:red;
+}
+label{
+color:blue;
+font-weight: bold;
+}
+.sub{
+width:80px;
+color:black;
+background-color:white;
+border-radius:5px;
+}
+.sub:hover{
+background-color:orchid;
+box-shadow:0 0 5px black;
+color:white;
+}
+</style>
+  <script>
+    function checkPasswords() {
+      var Username= document.getElementById("username").value;
+      var password2 =document.getElementById("password").value;
+sessionStorage.setItem("user",Username);
+      if (password2=="purna") {
+        
+	return true;
+      } else {
+        alert("Passwords do not match!");
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+<center>
+<br><br><br>
+<div>
+  <form onsubmit="return checkPasswords()" action="2ndpage.html">
+<h2>Login</h2>
+
+    <label for="password1">Username:</label><br>
+    <input type="text" id="username" required><br>
+    
+    <label for="password2">Password:</label><br>
+    <input type="password" id="password" required><br><br>
+    
+    <input type="submit" class="sub" value="Submit">
+<br><br>
+  </form>
+</div>
+</center>
+</body>
+</html>

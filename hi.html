@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+const st=sessionStorage.getItem("booked");
+const st1=sessionStorage.getItem("foody");
+const res = st.replace(/(\r\n|\r|\n)/g, '<br>');
+const res1 = st1.replace(/(\r\n|\r|\n)/g, '<br>');
+document.write(res);
+document.write(res1);
+</script>
+<body>
+<p id="d"></p>
+</body>
+</html>
